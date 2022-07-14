@@ -12,7 +12,12 @@ const routes = [
     redirect: 'home/first',
     children: [
       { path: 'first', component: () => import('@/views/Home/components/First.vue') },
-      { path: 'user', component: () => import('@/views/User') }
+      { path: 'users', component: () => import('@/views/User') },
+      { path: 'roles', component: () => import('@/views/Roles/userlist.vue') },
+      { path: 'rights', component: () => import('@/views/Roles/roleslist.vue') },
+      { path: 'goods', component: () => import('@/views/Goods/goodlist.vue') },
+      { path: 'addgoods', component: () => import('@/views/Goods/addgoods.vue') }
+
     ]
   }
 

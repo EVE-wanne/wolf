@@ -20,9 +20,8 @@ const actions = {
   //* 定义一个登录的异步函数
   async login (context, value) {
     const res = await login(value)
-    // console.log(2222)
     console.log(res)
-    context.commit('settoken', res.data)
+    context.commit('settoken', res.token)
   }
 }
 

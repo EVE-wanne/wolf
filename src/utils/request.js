@@ -3,6 +3,7 @@ import axios from 'axios'
 import store from '@/store'
 
 import { Message } from 'element-ui'
+
 const request = axios.create({
   baseURL: 'http://liufusong.top:8899/api/private/v1/',
   timeout: 8000
@@ -28,8 +29,9 @@ request.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   //* 我们可以对数据进行解构
   const { meta, data } = response.data
-  if (meta.status === 200) {
+  if (meta.status === 200 || meta.status === 201) {
     console.log(111)
+    Message.success(meta.msg)
     return data
   } else {
     //* 其它都是抛出异常
