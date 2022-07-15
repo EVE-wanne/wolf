@@ -28,7 +28,11 @@
         </el-table-column>
         <el-table-column prop="goods_weight" label="商品重量">
         </el-table-column>
-        <el-table-column prop="upd_time" label="创建时间"></el-table-column>
+        <el-table-column prop="upd_time" label="创建时间">
+          <template slot-scope="props">
+            {{ props.row.upd_time | datefmt }}
+          </template>
+        </el-table-column>
         <el-table-column prop="address" label="操作">
           <!-- 编辑按钮 -->
           <el-button type="primary" icon="el-icon-edit"></el-button>
@@ -73,11 +77,13 @@ export default {
     handleSizeChange (val) {
       console.log(`每页 ${val} 条`)
       this.pagesize = val
+      this.getgoods({ pagenum: this.pagenum, pagesize: this.pagesize })
     },
     //* 更改页码就会执行
     handleCurrentChange (val) {
       console.log(`当前页: ${val}`)
       this.pagenum = val
+      this.getgoods({ pagenum: this.pagenum, pagesize: this.pagesize })
     },
     //* 我们定义一个发送请求的函数，因为当进页面的时候，我们需要获得数据
     //* 点击页码，切换数据的时候也要进行请求
@@ -97,6 +103,7 @@ export default {
       this.dialogVisible = true
       this.$router.push('addgoods')
       this.$store.commit('user/setbreadcrumb', {
+        one: '首页',
         first: '商品管理',
         two: '添加商品'
       })

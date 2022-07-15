@@ -1,17 +1,10 @@
 <template>
-  <div>欢迎xxx</div>
+  <div>商品分类</div>
 </template>
 
 <script>
 export default {
-  created () {
-    //* 开始的时候我们就将面包屑清空
-    this.$store.commit('user/setbreadcrumb', {
-      one: '',
-      first: '',
-      two: ''
-    })
-  },
+  created () { },
   data () {
     return {}
   },
@@ -20,7 +13,6 @@ export default {
   watch: {},
   filters: {},
   components: {}
-
 }
 </script>
 
