@@ -29,4 +29,16 @@ const router = new VueRouter({
   routes
 })
 
+// router.beforeEach((to, from, next) => {
+//   const tk = local.get('tk')
+//   if (to.path == '/login') { // 只要访问了登录都应该放行
+//     next()
+//   } else if (tk) {
+//     // 只要有token说明登录成功，都应该放行
+//     next()
+//   } else if (!tk) {
+//     // token不存在应该退回到登录页面
+//     router.push('/login')
+//   }
+// })
 export default router

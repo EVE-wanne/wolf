@@ -5,8 +5,8 @@ import store from '@/store'
 import { Message } from 'element-ui'
 
 const request = axios.create({
-  baseURL: 'http://liufusong.top:8899/api/private/v1/',
-  timeout: 8000
+  baseURL: 'http://liufusong.top:8899/api/private/v1/'
+  // timeout: 8000
 })
 
 // 添加请求拦截器

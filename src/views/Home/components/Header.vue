@@ -2,7 +2,7 @@
   <div class="header-container">
     <img src="@/assets/logo1.png" alt="" />
     <p>狼的诱惑后台管理系统</p>
-    <el-button class="logoutbtn">退出</el-button>
+    <el-button class="logoutbtn" @click="layout">退出</el-button>
   </div>
 </template>
 
@@ -12,7 +12,13 @@ export default {
   data () {
     return {}
   },
-  methods: {},
+  methods: {
+    layout () {
+      //* 退出操作，将vuex里存储的token删除
+      this.$store.commit('login/deltoken')
+      this.$router.push('/login')
+    }
+  },
   computed: {},
   watch: {},
   filters: {},

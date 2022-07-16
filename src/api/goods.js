@@ -64,3 +64,61 @@ export const addgoods = (data) => {
     data
   })
 }
+
+/**
+ *  添加动态静态参数
+ * @param {分类id} param0
+ * @param {参数名称} param1
+ * @param {only,many} param2
+ * @param {many 需要填写值的选项} param3
+ * @returns
+ */
+// eslint-disable-next-line camelcase
+export const addcategories = ({ id, attr_name, attr_sel, attr_vals }) => {
+  return request({
+    method: 'POST',
+    url: `categories/${id}/attributes`,
+    data: {
+      attr_name,
+      attr_sel,
+      attr_vals
+    }
+  })
+}
+
+/**
+ *  更新动态静态参数
+ * @param {分类id} param0
+ * @param {attrId,属性id} param1
+ * @param {参数名称} param2
+ * @param {only,many} param3
+ * @param {many 需要填写值的选项} param4
+ * @returns
+ */
+
+// eslint-disable-next-line camelcase
+export const putcategories = (val) => {
+  return request({
+    method: 'PUT',
+    url: `categories/${parseFloat(val.cat_id)}/attributes/${val.attr_id}`,
+    data: {
+      attr_name: val.attr_name,
+      attr_sel: val.attr_sel,
+      attr_vals: val.attr_vals
+    }
+  })
+}
+
+/**
+ *  删除参数
+ * @param {id 分类id} param0
+ * @param {attrid 参数名称} param1
+ * @returns
+ */
+export const delcategories = ({ id, attrid }) => {
+  return request({
+    method: 'DELETE',
+    url: `categories/${id}/attributes/${attrid}`
+
+  })
+}
