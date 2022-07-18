@@ -30,12 +30,16 @@ request.interceptors.response.use(function (response) {
   //* 我们可以对数据进行解构
   const { meta, data } = response.data
   if (meta.status === 200 || meta.status === 201) {
-    console.log(111)
+    // console.log(111)
     Message.success(meta.msg)
     return data
   } else {
     //* 其它都是抛出异常
-    console.log(222)
+    //* 如果异常信息是token异常，我们需要将本地的token清除
+    if (meta.msg === '无效token') {
+      store.commit('login/deltoken')
+    }
+    // console.log(222)
     Message.error(meta.msg) // 提示错误消息
     return Promise.reject(new Error(meta.msg))
   }

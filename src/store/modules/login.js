@@ -11,7 +11,7 @@ const mutations = {
   settoken (state, layout) {
     state.token = layout
   },
-  deltoken (state, layout) {
+  deltoken (state) {
     state.token = null
   }
 }

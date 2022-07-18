@@ -122,3 +122,23 @@ export const delcategories = ({ id, attrid }) => {
 
   })
 }
+
+/**
+ *
+ * @param {分类父id,如果是一级分类，为0} param0
+ * @param {分类名称} param1
+ * @param {分类层级} param2
+ * @returns
+ */
+// eslint-disable-next-line camelcase
+export const addclass = ({ cat_pid, cat_name, cat_level }) => {
+  return request({
+    method: 'POST',
+    url: 'categories',
+    data: {
+      cat_pid,
+      cat_name,
+      cat_level
+    }
+  })
+}
