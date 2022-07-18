@@ -48,7 +48,7 @@
 
     <!-- 修改地址的弹窗 -->
     <el-dialog title="修改收货地址" :visible.sync="dialogVisible" width="30%">
-      <el-cascader :options="cityOptions" clearable :value="city"></el-cascader>
+      <el-cascader :options="cityOptions" clearable value="city"></el-cascader>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false"

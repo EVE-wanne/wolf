@@ -39,7 +39,12 @@
     </el-card>
 
     <!-- 添加参数的弹窗 -->
-    <el-dialog :title="'添加' + title" :visible.sync="showmany" width="50%">
+    <el-dialog
+      :title="'添加' + title"
+      :visible.sync="showmany"
+      width="50%"
+      @close="close"
+    >
       <el-form label-width="80px" :model="From" :rules="rules" ref="addfrom">
         <el-form-item :label="title" prop="input">
           <el-input v-model="From.input"></el-input>
@@ -155,6 +160,12 @@ export default {
       } catch (err) {
         console.log(err)
       }
+    },
+    close () {
+      this.From = {
+        input: ''
+      }
+      this.showmany = false
     }
   },
   computed: {

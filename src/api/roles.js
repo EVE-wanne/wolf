@@ -42,3 +42,27 @@ export const delroles = ({ roleId, rightId }) => {
     url: `roles/${roleId}/rights/${rightId}`
   })
 }
+
+/**
+ *
+ * 添加角色
+ * @returns
+ */
+export const adduse = (data) => {
+  return request({
+    method: 'POST',
+    url: 'roles',
+    data
+  })
+}
+
+/**
+ * 删除user
+ * @returns
+ */
+export const deluse = (id) => {
+  return request({
+    method: 'DELETE',
+    url: `roles/${id}`
+  })
+}

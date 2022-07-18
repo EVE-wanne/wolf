@@ -70,6 +70,7 @@
       :visible.sync="dialogVisible"
       width="50%"
       v-if="dialogVisible"
+      @close="addfrom.cat_name = ''"
     >
       <el-form label-width="80px" :model="addfrom" :rules="rules" ref="addfrom">
         <el-form-item label="分类名称" prop="cat_name">
@@ -106,7 +107,7 @@ export default {
   },
   data () {
     return {
-      total: '',
+      total: null,
       alldata: {},
       tableData: [],
       pagesize: 4, //* 默认每页的数量
@@ -169,7 +170,9 @@ export default {
           //* 重新加载
           this.getlist()
         }
-
+        this.addfrom = {
+          cat_name: ''
+        }
         this.dialogVisible = false
       } catch (err) {
         console.log(err)

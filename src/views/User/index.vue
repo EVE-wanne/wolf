@@ -84,7 +84,7 @@
       title="添加用户对话框"
       :visible.sync="dialogVisible"
       width="50%"
-      :before-close="handleClose"
+      @close="close"
     >
       <el-form :model="ruleFrom" :rules="rules" ref="adduserForm">
         <!-- 用户名 -->
@@ -137,19 +137,14 @@
       </el-form>
       <!-- 底部按钮 -->
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button @click="close">取 消</el-button>
         <el-button type="primary" @click="adduser">确 定</el-button>
       </span>
     </el-dialog>
     <!-- /添加用户对话框 -->
 
     <!-- 编辑用户对话框 -->
-    <el-dialog
-      title="编辑用户对话框"
-      :visible.sync="change"
-      width="50%"
-      :before-close="handleClose"
-    >
+    <el-dialog title="编辑用户对话框" :visible.sync="change" width="50%">
       <el-form :model="ruleFromone" :rules="rulesone" ref="changeuserForm">
         <!-- 用户名 -->
         <el-form-item label="用户名" prop="username">
@@ -197,12 +192,7 @@
     <!-- /编辑用户对话框 -->
 
     <!-- 删除的询问框 -->
-    <el-dialog
-      title="提示"
-      :visible.sync="del"
-      width="30%"
-      :before-close="handleClose"
-    >
+    <el-dialog title="提示" :visible.sync="del" width="30%">
       <span class="el-icon-warning">此操作将永久删除该用户，是否继续？</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="del = false">取 消</el-button>
@@ -212,12 +202,7 @@
     <!-- /删除的询问框 -->
 
     <!-- 分配角色的对话框 -->
-    <el-dialog
-      title="分配角色"
-      :visible.sync="roles"
-      width="30%"
-      :before-close="handleClose"
-    >
+    <el-dialog title="分配角色" :visible.sync="roles" width="30%">
       <p>当前的用户：{{ setinfo.username }}</p>
       <p>当前的角色：{{ setinfo.rolename }}</p>
       <p>
@@ -436,6 +421,15 @@ export default {
       })
       const res = await changeroles({ id: this.setinfo.id, rid: this.uid })
       console.log(res)
+    },
+    close () {
+      this.ruleFrom = { //* 添加用户表单的内容
+        username: '',
+        password: '',
+        email: '',
+        mobile: ''
+      }
+      this.dialogVisible = false
     }
   },
   computed: {
